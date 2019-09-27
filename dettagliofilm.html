@@ -1,0 +1,169 @@
+<html>
+
+<head>
+  <title>EvaMovie</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="menu">
+      <nav class="navbar navbar-dark  navbar-expand-md fixed-top bg-dark" id="navmenu">
+        <a class="navbar-brand" style="color:white" href="index.html">EvaMovie</a>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+              <a class="nav-link" href="index.html?page=Popular-Movie">Popular</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html?page=Top-Rated">Top Rated</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html?page=Up-Coming">Up Coming</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html?page=Now-Playing">Now Playing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="favorite" href="index.html?page=favorite">Favorite Film</a>
+            </li>
+          </ul>
+          <form id="searchform" class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" id="textsearch" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </div>
+
+    <div class="contenitoreInfoFilm">
+      <div class="fluid-opacity">
+        <div class="container">
+          <table class="table">
+            <tr>
+              <td>
+                <img class="card" id="poster-film" src="/img/card-poster.jpg">
+              </td>
+              <td>
+                <table class="table">
+                  <tr>
+                    <h1 id="title">Title</h1>
+                  </tr>
+                  <tr>
+                    <h4 id="year"></h4>
+                    <p id="genre"></p>
+                    <p id="vote">Vote average: </p>
+                  </tr>
+                </table>
+              </td>
+              <td style="max-width: 500px;">
+                <h1>Description</h1>
+                <p id="description"></p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="containerActor" class="container-fluid">
+      <table class="table table-responsive table-borderless">
+        <tr id="photoActor"></tr>
+        <tr id="nameActor"></tr>
+        <tr id="characterActor"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+  </div>
+
+
+
+  <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <table class="table">
+            <tr>
+              <td><img id="imgActor" src="/card-poster.jpg" style="width: 200px; height: 300px;"></td>
+              <td>
+                <h3 id="name">Surname Name</h3>
+                <h4 id="birthday">Birthday: </h4>
+                <h4 id="placeOfBirth">place of birth</h4>
+                <p id="biography"> <strong>Biography:</strong> </p>
+              </td>
+            </tr>
+          </table>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Modify Favorite -->
+  <div class="modal fade" id="modalfavorite" tabindex="-1" role="dialog" aria-labelledby="modalfavorite"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="modalfavoriteLongTitle">Seleziona dove inserire il Preferito</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <h6>Senza Categoria: <button onclick="btnNoCategory()">x</h6>
+              <div id="selectcategory">
+                  <form id="modalform">
+                      <select class="custom-select" id="multiSelectModal" multiple>
+                      </select>
+                  </form>
+              </div>
+              <div id="aggiungicategory"></div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" id="sendModal" class="btn btn-primary">Save changes</button>
+              <button type="button" id="btnAddCategory" style="display: none" class="btn btn-primary">Aggiungi
+                  Categoria</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="js/function.js"></script>
+  <script type="text/javascript">
+    infoMovie();
+  </script>
+</body>
+
+</html>

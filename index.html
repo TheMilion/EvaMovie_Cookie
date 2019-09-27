@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <title>EvaMovie</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+
+    <div id="menu">
+        <nav class="navbar navbar-dark  navbar-expand-md fixed-top bg-dark" id="navmenu">
+            <a class="navbar-brand" style="color:white" href="index.html">EvaMovie</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="popular" href="index.html?page=Popular-Movie">Popular</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="toprated" href="index.html?page=Top-Rated">Top Rated</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="upcoming" href="index.html?page=Up-Coming">Up Coming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nowplaying" href="index.html?page=Now-Playing">Now Playing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="favorite" href="index.html?page=favorite">Favorite Film</a>
+                    </li>
+                </ul>
+                <form id="searchform" class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" id="textsearch" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+    <div id="superContenitoreFilm" class="superContenitoreInfoFilm">
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="contenitorefilm col-md-10" id="contenitorefilm">
+            <nav class="navbar" id="navbar">
+                <div class="mx-auto order-0">
+                    <div class="input-group">
+                        <form id="discoverform" class="form-inline mt-2 mt-md-0">
+                            <select class="custom-select" id="selectgenres">
+                                <option selected name="category" value="">Categoria...</option>
+                            </select>
+                            <select class="custom-select" id="selectyear">
+                                <option selected value="">Anno...</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar" style="display: none" id="navbar3">
+                <div class="mx-auto order-0">
+
+                    <div id="selectfavorite">
+                        <p>
+                            <select class="custom-select" id="selectCategory" onchange="toolSelect(this)">
+                            </select>
+                            <button id="toggleButton2" onclick="addCategoryFav()" value="add">+</button>
+                            <button id="modFav" disabled value="add" onclick="toolMod()">Modifica Nome
+                                Categoria</button>
+                            <button id="delFav" onclick="deleteModalfavorite()"disabled>Cancella Categoria</button>
+                        </p>
+                        <div id="contenitoreinputmod"></div>
+                        <div id="aggiungicategory2"></div>
+                    </div>
+                </div>
+            </nav>
+            <div id="testo_vuoto">
+                
+            </div>
+            <div id="listafilm">
+
+            </div>
+            
+            <nav class="navbar" id="navbar2">
+                <div id="bottoneloadMore" class="mx-auto order-0"></div>
+            </nav>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+
+
+
+
+    <!-- Modal Modify Favorite -->
+    <div class="modal fade" id="modalfavorite" tabindex="-1" role="dialog" aria-labelledby="modalfavorite"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalfavoriteLongTitle">Seleziona dove inserire il Preferito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Senza Categoria: <button onclick="btnNoCategory()">x</h6>
+                    <div id="selectcategory">
+                        <form id="modalform">
+                            <select class="custom-select" id="multiSelectModal" multiple>
+                            </select>
+                        </form>
+                    </div>
+                    <div id="aggiungicategory"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="sendModal" class="btn btn-primary">Save changes</button>
+                    <button type="button" id="btnAddCategory" style="display: none" class="btn btn-primary">Aggiungi
+                        Categoria</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <!-- Modal Delete Favorite -->
+     <div class="modal fade" id="deletemodalfavorite" tabindex="-1" role="dialog" aria-labelledby="deletemodalfavorite"
+     aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="deletemodalfavoriteLongTitle">Vuoi cancellare la categoria?</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">
+                        <h4>N.B RICORDA CHE CANCELLERAI ANCHE TUTTO IL CONTENUTO AL SUO INTERNO.</h4>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                 <button type="button" id="sendDelete" class="btn btn-primary">Conferma</button>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+
+    <!-- Build your select: -->
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
+
+    <script src="js/function.js"></script>
+</body>
+
+
+</html>

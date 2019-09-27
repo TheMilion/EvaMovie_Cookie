@@ -1,0 +1,138 @@
+body {
+  padding-top: 69px;
+}
+
+.contenitorefilm {
+  list-style: none;
+}
+
+.movies-item {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.contenitoreInfoFilm {
+  height: 500px;
+  width: 100%;
+  background-image: url(/img/card-backdrop.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  z-index: 1;
+  padding: 0;
+}
+.fluid-opacity {
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  height: 500px;
+  z-index: 2;
+}
+.card {
+  position: static;
+  height: 300px;
+  width: 200px;
+}
+.contenitoreInfoFilm p,
+.contenitoreInfoFilm h1,
+.contenitoreInfoFilm h4 {
+  color: white;
+}
+#containerActor {
+  margin-top: -50px;
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+#navbar {
+  padding-top: 30px;
+  text-align: center;
+}
+
+a {
+  transition: color 0.18s ease, background-color 0.18s ease,
+    border-color 0.18s ease;
+  outline: none;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  color: red;
+  outline: none;
+  text-decoration: none;
+}
+
+a:active {
+  outline: none;
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+/* Required Styling */
+
+label input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox {
+  margin-left: 1em;
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-checkbox .fa {
+  color: gold;
+  position: absolute;
+  width: 300px;
+  top: 0.4em;
+  left: -1.25em;
+  font-size: 0.75em;
+}
+.custom-checkbox .fa-star-o {
+  color: gray;
+}
+.custom-checkbox .fa-star {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.custom-checkbox:hover .fa-star {
+  opacity: 0.5;
+}
+.custom-checkbox input[type="checkbox"]:checked ~ .fa-star {
+  opacity: 1;
+}
+
+.inline p,.movies-item div, .inline label,.inline input,.inline span, .inline i{
+  display: inline;
+}
